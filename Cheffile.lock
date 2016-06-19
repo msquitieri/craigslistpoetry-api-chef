@@ -94,6 +94,11 @@ PATH
   specs:
     sysadmins (0.1.3)
 
+PATH
+  remote: vendor/cookbooks/the_bard
+  specs:
+    the_bard (0.1.0)
+
 DEPENDENCIES
   apt (~> 2.6.1)
   backups (>= 0)
@@ -108,4 +113,5 @@ DEPENDENCIES
   ssh_deploy_keys (>= 0)
   sudo (~> 2.7.0)
   sysadmins (>= 0)
+  the_bard (>= 0)
 
