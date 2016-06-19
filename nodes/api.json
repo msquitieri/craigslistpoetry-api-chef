@@ -1,0 +1,74 @@
+{
+  "run_list": [
+    "role[mysql]",
+    "role[remove_applications]",
+    "role[rails]",
+    "role[sysadmins]",
+    "recipe[the_bard::secrets]",
+    "recipe[the_bard::smtp]",
+    "recipe[the_bard::cron]"
+  ],
+  "mysql": {
+    "server_debian_password": "PASSWORD",
+    "server_root_password": "PASSWORD",
+    "server_repl_password": "PASSWORD"
+  },
+  "packages": ["vim", "git"],
+  "sysadmins": {
+    "deploy": {
+      "password": "PASSWORD",
+      "ssh_keys": [
+      ]
+    }
+  },
+  "apt": {
+    "unattended_upgrades": {
+      "enabled": true
+    }
+  },
+  "ssh_deploy_keys": [
+  ],
+  "remove_applications": ["craigslistpoetry-api_production"],
+  "backups": {
+    "craigslistpoetry-api_production" : {
+      "enabled": true,
+      "storage_type": "s3",
+      "s3_access_key": "S3_ACCESS_KEY",
+      "s3_secret_access_key": "S3_SECRET_ACCESS_KEY",
+      "s3_bucket": "S3_BUCKET",
+      "s3_region": "us-east-1",
+      "database_type": "mysql",
+      "database_username": "USERNAME",
+      "database_password": "PASSWORD",
+      "database_host": "localhost"
+    }
+  },
+  "active_applications": {
+    "craigslistpoetry-api_production": {
+      "rails_env": "production",
+      "packages": ["nodejs"],
+      "domain_names": [""],
+      "redirect_domain_names": [],
+      "ruby_version": "2.2.4",
+      "client_max_body_size": "200m",
+      "database_info": {
+        "adapter": "mysql2",
+        "host": "localhost",
+        "username": "deploy",
+        "password": "PASSWORD",
+        "database": "DB_NAME"
+      }
+    }
+  },
+
+  "secrets": {
+    "production": "MY_SECRET"
+  },
+
+  "smtp": {
+    "production": {
+      "user_name": "USER_NAME",
+      "password": "PASSWORD"
+    }
+  }
+}
