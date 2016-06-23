@@ -1,0 +1,31 @@
+#! /bin/bash
+
+DATE_STRING=`date +%Y-%m-%d-%H_%M_%S`
+FILE_NAME="craigslistpoetry-${DATE_STRING}.sql.gz"
+
+DB_HOST="localhost"
+DB_USER="<%= @database_info['username'] %>"
+DB_PASSWORD="<%= @database_info['password'] %>"
+DB_NAME="<%= @database_info['database'] %>"
+S3_BUCKET="<%= @s3_bucket %>"
+S3_DATE_DIR=`date +%m-%Y`
+BACKUP_DIR="/tmp/backups/mysql"
+
+FILE_PATH="${BACKUP_DIR}/${FILE_NAME}"
+
+echo
+echo "------------"
+echo `date`
+echo "------------"
+
+
+echo "Dumping database..."
+mysqldump --host="${DB_HOST}" --user="${DB_USER}" --password="${DB_PASSWORD}" "${DB_NAME}" | gzip > "${FILE_PATH}"
+
+echo "Uploading to S3..."
+/usr/local/bin/aws s3 cp "${FILE_PATH}" "s3://${S3_BUCKET}/${S3_DATE_DIR}/${FILE_NAME}"
+
+echo "Cleaning up..."
+rm "${FILE_PATH}"
+
+echo "Done."
