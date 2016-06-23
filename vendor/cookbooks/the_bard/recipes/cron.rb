@@ -13,5 +13,5 @@ cron 'admin activity email' do
   hour '3'
   weekday '*'
   user 'deploy'
-  command 'cd /u/apps/craigslistpoetry-api_production/current && RAILS_ENV=production /opt/rbenv/shims/bundle exec rake admin:activity_notification >> /u/apps/craigslistpoetry-api_production/shared/log/notification.log'
+  command 'cd /u/apps/craigslistpoetry-api_production/current && RAILS_ENV=production /opt/rbenv/shims/bundle exec rake admin:activity_notification >> /u/apps/craigslistpoetry-api_production/shared/log/notification.log 2>&1'
 end
