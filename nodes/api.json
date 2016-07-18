@@ -9,6 +9,7 @@
     "recipe[the_bard::backup]",
     "recipe[the_bard::secrets]",
     "recipe[the_bard::smtp]",
+    "recipe[the_bard::twitter]",
     "recipe[the_bard::cron]"
   ],
   "mysql": {
@@ -65,6 +66,15 @@
     "access_key": "ACCESS_KEY",
     "secret_access_key": "SECRET_ACCESS_KEY",
     "region": "AWS_REGION"
+  },
+
+  "twitter": {
+    "production": {
+      "consumer_key": "CONSUMER_KEY",
+      "consumer_secret": "CONSUMER_SECRET",
+      "access_token": "ACCESS_TOKEN",
+      "access_token_secret": "ACCESS_TOKEN_SECRET"
+    }
   },
 
   "backup": {

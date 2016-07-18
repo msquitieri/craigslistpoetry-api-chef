@@ -1,0 +1,7 @@
+<%- @twitter.each do |environment, settings| %>
+<%= environment %>:
+  consumer_key: <%= settings['consumer_key'] %>
+  consumer_secret: <%= settings['consumer_secret'] %>
+  access_token: <%= settings['access_token'] %>
+  access_token_secret: <%= settings['access_token_secret'] %>
+<% end %>
