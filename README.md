@@ -3,6 +3,12 @@ craigslistpoetry-api-chef
 
 Forked from [https://github.com/intercity/chef-repo](https://github.com/intercity/chef-repo). Special thanks to them!
 
+These collection of chef recipes:
+
+- install MySQL for databases
+- set up the `craigslistpoetry-api` project with the proper directory structure for `capitstrano` deploys.
+- Set's up cron jobs to email admin users an activity email, send out tweets, and perform daily backups.
+- Includes configuration management for all sensitive API keys and passwords for various external services.
 
 ## Getting started
 
@@ -52,3 +58,10 @@ Change the host IP in the config/deploy/production.rb, and run `bundle exec cap 
 
 
 **That's it!** The application should have been deployed.
+
+
+## Related Repos
+
+Please see related repos to this project:
+- [craigslistpoetry-frontend](https://github.com/msquitieri/craigslistpoetry-frontend) repo, which is written in [Ember](https://github.com/emberjs/ember.js)
+- [craigslistpoetry-api](https://github.com/msquitieri/craigslistpoetry-api) repo, a Ruby on Rails application to retreive poems and their data.
