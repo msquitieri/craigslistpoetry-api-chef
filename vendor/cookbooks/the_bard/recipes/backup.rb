@@ -40,4 +40,12 @@ if node['backup']
     command '/home/deploy/scripts/backup_database.sh >> /home/deploy/scripts/backup.log 2>&1'
   end
 
+  logrotate_app "craigslistpoetry-backups" do
+    cookbook "logrotate"
+    path ["/home/deploy/scripts/*.log"]
+    frequency "daily"
+    rotate 14
+    compress true
+    create "644 deploy deploy"
+  end
 end
