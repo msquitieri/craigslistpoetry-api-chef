@@ -60,6 +60,15 @@ Change the host IP in the config/deploy/production.rb, and run `bundle exec cap 
 **That's it!** The application should have been deployed.
 
 
+### Extra: Setting up Let's Encrypt SSL Certificate
+Chef will automatically include the [certbot](https://certbot.eff.org/#ubuntutrusty-nginx). All you need to do is run the command:
+
+```
+sudo certbot --nginx
+```
+
+and follow the prompts. A cron will automatically trigger the renewal every 60 days.
+
 ## Related Repos
 
 Please see related repos to this project:

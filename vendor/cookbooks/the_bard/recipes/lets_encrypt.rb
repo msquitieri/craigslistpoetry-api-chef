@@ -26,4 +26,17 @@ if node['lets_encrypt']
   execute 'apt-get install python-certbot-nginx' do
     command 'apt-get install python-certbot-nginx'
   end
+
+  cron 'certbot renew' do
+    action :create
+    minute '0'
+    # 11PM EST
+    hour '5'
+    day '15'
+    weekday '*'
+    month '*'
+    user 'root'
+    command 'certbot renew >> /var/log/certbot.log'
+  end
+
 end
