@@ -84,5 +84,7 @@
       "database": "DB_NAME"
     },
     "s3_bucket": "S3_DESTINATION_BUCKET"
-  }
+  },
+
+  "lets_encrypt": true
 }
